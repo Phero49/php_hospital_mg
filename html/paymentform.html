@@ -1,0 +1,210 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, shrink-to-fit=no"
+    />
+    <title>Profile - Brand</title>
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i&amp;display=swap"
+    />
+    <link rel="stylesheet" href="assets/fonts/fontawesome-all.min.css" />
+  </head>
+
+  <body id="page-top">
+    <div id="wrapper">
+      <nav
+        class="navbar navbar-dark align-items-start sidebar sidebar-dark accordion bg-gradient-primary p-0"
+        style="background: #af7505"
+      >
+        <div class="container-fluid d-flex flex-column p-0">
+          <a
+            class="navbar-brand d-flex justify-content-center align-items-center sidebar-brand m-0"
+            href="#"
+          >
+            <div class="sidebar-brand-icon rotate-n-15">
+              <i class="fas fa-hospital"></i>
+            </div>
+            <div class="sidebar-brand-text mx-3"><span>dYuni SHS</span></div>
+          </a>
+          <hr class="sidebar-divider my-0" />
+          <ul class="navbar-nav text-light" id="accordionSidebar">
+            <li class="nav-item">
+              <a class="nav-link active" href="paymentform.html"
+                ><i class="fab fa-wpforms"></i><span>&nbsp;Bill Form</span></a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="Billpayment.html"
+                ><i class="fas fa-table"></i><span>Bill Details&nbsp;</span></a
+              ><a class="nav-link" href="index.html"></a>
+            </li>
+          </ul>
+          <div class="text-center d-none d-md-inline">
+            <button
+              class="btn rounded-circle border-0"
+              id="sidebarToggle"
+              type="button"
+            ></button>
+          </div>
+        </div>
+      </nav>
+      <div class="d-flex flex-column" id="content-wrapper">
+        <div id="content">
+          <nav
+            class="navbar navbar-light navbar-expand bg-white shadow mb-4 topbar static-top"
+          >
+            <div class="container-fluid">
+              <button
+                class="btn btn-link d-md-none rounded-circle me-3"
+                id="sidebarToggleTop"
+                type="button"
+              >
+                <i
+                  class="fas fa-bars"
+                  style="border-color: #af7505; background: #af7505"
+                ></i>
+              </button>
+            </div>
+          </nav>
+          <div class="container-fluid">
+            <h3 class="text-dark mb-4" style="margin-left: 0px">
+              Bill Payment&nbsp;
+            </h3>
+            <div class="row mb-3">
+              <div class="col-lg-8">
+                <div class="row mb-3 d-none">
+                  <div class="col">
+                    <div class="card text-white bg-primary shadow">
+                      <div class="card-body">
+                        <div class="row mb-2">
+                          <div class="col">
+                            <p class="m-0">Peformance</p>
+                            <p class="m-0"><strong>65.2%</strong></p>
+                          </div>
+                          <div class="col-auto">
+                            <i class="fas fa-rocket fa-2x"></i>
+                          </div>
+                        </div>
+                        <p class="text-white-50 small m-0">
+                          <i class="fas fa-arrow-up"></i>&nbsp;5% since last
+                          month
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col">
+                    <div class="card text-white bg-success shadow">
+                      <div class="card-body">
+                        <div class="row mb-2">
+                          <div class="col">
+                            <p class="m-0">Peformance</p>
+                            <p class="m-0"><strong>65.2%</strong></p>
+                          </div>
+                          <div class="col-auto">
+                            <i class="fas fa-rocket fa-2x"></i>
+                          </div>
+                        </div>
+                        <p class="text-white-50 small m-0">
+                          <i class="fas fa-arrow-up"></i>&nbsp;5% since last
+                          month
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-xxl-10 offset-xxl-4">
+                    <div class="card shadow mb-3">
+                      <div class="card-header py-3">
+                        <p style="font-weight: bold; color: #af7505">
+                          Bill Info
+                        </p>
+                      </div>
+                    </div>
+                    <div class="card shadow">
+                      <div class="card-body">
+                        <form method="post" action="../php/addBill.php" >
+                            <input style="display: none;" id="reg_num" name="reg_number" type="text" value="">
+                          <div class="mb-3">
+                            <label class="form-label" for="address"
+                              ><strong>Service Name</strong><br /></label
+                            ><input
+                              class="form-control"
+                              type="text"
+                              id="ServiceName"
+                              name="ServiceName"
+                            />
+                          </div>
+                          <div class="mb-3">
+                            <label class="form-label" for="address"
+                              ><strong>Service&nbsp; Amount</strong></label
+                            ><input
+                              class="form-control"
+                              type="number"
+                              id="serviceamount"
+                              name="serviceamount"
+                            />
+                          </div>
+                          <div class="mb-3">
+                            <label class="form-label" for="address"
+                              ><strong>Medication Name&nbsp;</strong
+                              ><br /></label
+                            ><input
+                              class="form-control"
+                              type="text"
+                              id="medicationname"
+                              name="medicationname"
+                            />
+                          </div>
+                          <div class="mb-3">
+                            <label class="form-label" for="address"
+                              ><strong>Medication&nbsp; Amount&nbsp;</strong
+                              ><br /></label
+                            ><input
+                              class="form-control"
+                              type="number"
+                              id="medicationamount"
+                              name="medicationamount"
+                            />
+                          </div>
+                          <div class="mb-3">
+                            <button
+                              class="btn btn-primary btn-sm"
+                              role="button"
+                              id="billpayment"
+                              style="width: 100px; background: #af7505"
+                              >SUBMIT</
+                            >
+                          </div>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <footer class="bg-white sticky-footer">
+          <div class="container my-auto">
+            <div class="text-center my-auto copyright">
+              <span>Copyright © Dyuni SHS 2023</span>
+            </div>
+          </div>
+        </footer>
+      </div>
+      <a class="border rounded d-inline scroll-to-top" href="#page-top"
+        ><i class="fas fa-angle-up"></i
+      ></a>
+    </div>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="assets/js/theme.js"></script>
+    <script src="../billForm.js"></script>
+  </body>
+</html>

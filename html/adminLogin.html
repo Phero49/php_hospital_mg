@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, shrink-to-fit=no"
+    />
+    <title>Login - Dyuni SHS</title>
+    <meta
+      name="description"
+      content="The Daeyang Student Hospital System is a digital healthcare system for students which will help them when accessing medical services by providing a trusted and secure patient information for medical treatment. The core purpose of this system is to eliminate the use of the hospital slips."
+    />
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i&amp;display=swap"
+    />
+    <link rel="stylesheet" href="assets/fonts/fontawesome-all.min.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css"
+    />
+    <link rel="stylesheet" href="assets/css/untitled.css" />
+  </head>
+
+  <body class="bg-gradient-primary" style="background: var(--bs-white)">
+    <div class="container">
+      <div class="card shadow-lg o-hidden border-0 my-5">
+        <div class="card-body p-0">
+          <div
+            class="row"
+            style="background: url('assets/img/dogs/carousel.jpg'), #af7505"
+          >
+            <div
+              class="col-lg-6 col-xl-5 offset-lg-3"
+              style="background: var(--bs-card-bg); border-radius: 30px"
+            >
+              <div
+                class="p-5"
+                style="
+                  margin-bottom: 120px;
+                  padding-bottom: 20px;
+                  --bs-body-bg: #af7505;
+                  border-radius: 35px;
+                  background: #ffffff;
+                "
+              >
+                <div class="text-center">
+                  <h4 class="text-dark mb-4" style="font-weight: bold">
+                    Welcome Back!
+                  </h4>
+                </div>
+
+                <form class="user" action="../php/login.php" method="post">
+                  <div class="text-danger text-center" id="error"></div>
+                  <div class="mb-3">
+                    <input value="admin" style="display: none;" name="role" />
+                    <input
+                      class="form-control form-control-user"
+                      type="text"
+                      aria-describedby="emailHelp"
+                      placeholder="work Email."
+                      name="email"
+                      style="/*font-size: 1rem;*/ color: var(--bs-black)"
+                    />
+                  </div>
+                  <div class="mb-3">
+                    <input
+                      class="form-control form-control-user"
+                      type="password"
+                      id="exampleInputPassword"
+                      placeholder="Password"
+                      name="password"
+                      style="color: var(--bs-black)"
+                    />
+                  </div>
+                  <div class="mb-3">
+                    <div class="custom-control custom-checkbox small">
+                      <div class="form-check">
+                        <input
+                          class="form-check-input custom-control-input"
+                          type="checkbox"
+                          id="formCheck-1"
+                        /><label
+                          class="form-check-label custom-control-label"
+                          for="formCheck-1"
+                          style="color: var(--bs-black); font-size: 16px"
+                          >Remember Me</label
+                        >
+                      </div>
+                    </div>
+                  </div>
+                  <button
+                    class="btn btn-primary d-block btn-user w-100"
+                    type="submit"
+                    style="
+                      --bs-primary: #af7505;
+                      --bs-primary-rgb: 175, 117, 5;
+                      background: var(--bs-border-color-translucent);
+                      border-color: #af7505;
+                      color: var(--bs-black);
+                      font-size: 16px;
+                    "
+                  >
+                    Login
+                  </button>
+                  <div class="row">
+                    <div
+                      class="col"
+                      id="spacing_Box"
+                      style="height: 20px"
+                    ></div>
+                  </div>
+                </form>
+                <div class="text-center">
+                  <header style="border-radius: 2px"></header>
+                  <a
+                    class="small"
+                    href="forgot-password.html"
+                    style="
+                      height: 12px;
+                      padding-right: 0px;
+                      margin-right: 26px;
+                      margin-top: -52px;
+                      padding-bottom: 0px;
+                      padding-top: 0px;
+                      margin-bottom: 52px;
+                      color: var(--bs-black);
+                      font-size: 18px;
+                    "
+                    >Forgot Password?</a
+                  >
+                </div>
+                <div class="text-center"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="assets/js/bs-init.js"></script>
+    <script src="assets/js/theme.js"></script>
+    <script src="../login.js"></script>
+  </body>
+</html>
