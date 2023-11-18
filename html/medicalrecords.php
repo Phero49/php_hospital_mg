@@ -42,7 +42,7 @@ if (!isset($_SESSION['user_id'])) {
                 </a>
                 <hr class="sidebar-divider my-0">
                 <ul class="navbar-nav text-light" id="accordionSidebar">
-                    <li class="nav-item"><a class="nav-link" href="balancetable.html"><i
+                    <li class="nav-item"><a class="nav-link" href="balancetable.php"><i
                                 class="fas fa-table"></i>&nbsp;Balance Table</a><a class="nav-link active"
                             href="medicalrecords.html"><i class="fas fa-table"></i><span>&nbsp;Medical
                                 Records</span></a><a class="nav-link" href="queryinput.html"><i
