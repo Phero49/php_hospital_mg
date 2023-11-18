@@ -26,7 +26,6 @@ function handleForm(evt) {
 form.addEventListener('submit', handleForm)
 
 window.onload = (evt) => {
-    alert('jjd')
     const el = document.querySelector("#uid")
     const elRole = document.querySelector('#role')
     const query = window.location.search.replace("&role", '').replace("?",'').split("=")
@@ -34,5 +33,4 @@ window.onload = (evt) => {
     const role = query[2]
     elRole.value = role
     el.value = uid
-    console.log(query, role,'jj')
 }

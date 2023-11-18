@@ -78,7 +78,8 @@ if (!isset($_SESSION['user_id'])) {
                         Account
                     </button>
                     <button class="btn text-white" type="button">
-                        <span>
+                        <a href="./logout.php">
+    <span>
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                                 class="bi bi-box-arrow-right" viewBox="0 0 16 16">
                                 <path fill-rule="evenodd"
@@ -88,6 +89,9 @@ if (!isset($_SESSION['user_id'])) {
                             </svg>
                         </span>
                         Logout
+
+                        </a>
+                    
                     </button>
                 </div>
             </div>
