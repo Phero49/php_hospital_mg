@@ -79,19 +79,19 @@ if (!isset($_SESSION['user_id'])) {
                     </button>
                     <button class="btn text-white" type="button">
                         <a href="./logout.php">
-    <span>
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                                class="bi bi-box-arrow-right" viewBox="0 0 16 16">
-                                <path fill-rule="evenodd"
-                                    d="M10 12.5a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v2a.5.5 0 0 0 1 0v-2A1.5 1.5 0 0 0 9.5 2h-8A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-2a.5.5 0 0 0-1 0v2z" />
-                                <path fill-rule="evenodd"
-                                    d="M15.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708.708L14.293 7.5H5.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3z" />
-                            </svg>
-                        </span>
-                        Logout
+                            <span>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                    class="bi bi-box-arrow-right" viewBox="0 0 16 16">
+                                    <path fill-rule="evenodd"
+                                        d="M10 12.5a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v2a.5.5 0 0 0 1 0v-2A1.5 1.5 0 0 0 9.5 2h-8A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-2a.5.5 0 0 0-1 0v2z" />
+                                    <path fill-rule="evenodd"
+                                        d="M15.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708.708L14.293 7.5H5.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3z" />
+                                </svg>
+                            </span>
+                            Logout
 
                         </a>
-                    
+
                     </button>
                 </div>
             </div>
@@ -135,49 +135,50 @@ if (!isset($_SESSION['user_id'])) {
                             // Bind the results to variables
                         
                             $result = $stmt->get_result();
-                        
+
                             if ($result->num_rows > 0) {
                                 $row = $result->fetch_assoc();
                                 ?>
                                 <div class="d-flex justify-content-center pb-5">
                                     <div class=" text-center p-4">
-                                        <img src="<?php echo $row['avatar']?>" alt="" class="rounded-circle mb-3 mt-4" width="160px" height="160px">
+                                        <img src="<?php echo $row['avatar'] ?>" alt="" class="rounded-circle mb-3 mt-4"
+                                            width="160px" height="160px">
                                     </div>
                                 </div>
                                 <?php
 
-                            
 
 
-                                    echo "<div class='d-flex justify-content-between mb-2'>";
-                                    echo "<div><strong>Registration Number:</strong></div><div>{$row['reg_number']}</div>";
-                                    echo "</div>";
 
-                                    echo "<div class='d-flex justify-content-between mb-2'>";
-                                    echo "<div><strong>Graduation Year:</strong></div><div>{$row['graduation_year']}</div>";
-                                    echo "</div>";
-                                    echo "<div class='d-flex justify-content-between mb-2'>";
-                                    echo "<div><strong>Enrollment Year:</strong></div><div>{$row['enrollment_year']}</div>";
-                                    echo "</div>";
-                                    echo "<div class='d-flex justify-content-between mb-2'>";
-                                    echo "<div><strong>First Name:</strong></div><div>{$row['first_name']}</div>";
-                                    echo "</div>";
-                                    echo "<div class='d-flex justify-content-between mb-2'>";
-                                    echo "<div><strong>Last Name:</strong></div><div>{$row['last_name']}</div>";
-                                    echo "</div>";
-                                    echo "<div class='d-flex justify-content-between mb-2'>";
-                                    echo "<div><strong>Faculty:</strong></div><div>{$row['faculty']}</div>";
-                                    echo "</div>";
-                                    echo "<div class='d-flex justify-content-between mb-2'>";
-                                    echo "<div><strong>Phone Number:</strong></div><div>{$row['phone_number']}</div>";
-                                    echo "</div>";
-                                    echo "<div class='d-flex justify-content-between mb-2'>";
-                                    echo "<div><strong>Email:</strong></div><div>{$row['email']}</div>";
-                                    echo "</div>";
-                                    echo "<div class='d-flex justify-content-between mb-2'>";
-                                    echo "<div><strong>Date of Birth:</strong></div><div>{$row['dob']}</div>";
-                                    echo "</div>";
-                                
+                                echo "<div class='d-flex justify-content-between mb-2'>";
+                                echo "<div><strong>Registration Number:</strong></div><div>{$row['reg_number']}</div>";
+                                echo "</div>";
+
+                                echo "<div class='d-flex justify-content-between mb-2'>";
+                                echo "<div><strong>Graduation Year:</strong></div><div>{$row['graduation_year']}</div>";
+                                echo "</div>";
+                                echo "<div class='d-flex justify-content-between mb-2'>";
+                                echo "<div><strong>Enrollment Year:</strong></div><div>{$row['enrollment_year']}</div>";
+                                echo "</div>";
+                                echo "<div class='d-flex justify-content-between mb-2'>";
+                                echo "<div><strong>First Name:</strong></div><div>{$row['first_name']}</div>";
+                                echo "</div>";
+                                echo "<div class='d-flex justify-content-between mb-2'>";
+                                echo "<div><strong>Last Name:</strong></div><div>{$row['last_name']}</div>";
+                                echo "</div>";
+                                echo "<div class='d-flex justify-content-between mb-2'>";
+                                echo "<div><strong>Faculty:</strong></div><div>{$row['faculty']}</div>";
+                                echo "</div>";
+                                echo "<div class='d-flex justify-content-between mb-2'>";
+                                echo "<div><strong>Phone Number:</strong></div><div>{$row['phone_number']}</div>";
+                                echo "</div>";
+                                echo "<div class='d-flex justify-content-between mb-2'>";
+                                echo "<div><strong>Email:</strong></div><div>{$row['email']}</div>";
+                                echo "</div>";
+                                echo "<div class='d-flex justify-content-between mb-2'>";
+                                echo "<div><strong>Date of Birth:</strong></div><div>{$row['dob']}</div>";
+                                echo "</div>";
+
                             } else {
                                 echo "No records found for the provided registration number.";
                             } ?>
@@ -197,9 +198,17 @@ if (!isset($_SESSION['user_id'])) {
 
 
                         <div class="my-2">
+                            <?php
+
+                            if(isset($row['reg_number'] )){
+?>
+
                             <button type="button" class="btn btn-primary px-5">
-                                <a href="../html/paymentform.html?reg_num=<?php echo $row['reg_number']?>" class="nav-link">Proceed</a>
+                                <a href="../html/paymentform.html?reg_num=<?php echo $row['reg_number'] ?>"
+                                    class="nav-link">Proceed</a>
                             </button>
+                            
+                           <?php }?>
                             <button type="button" class="btn btn-dark px-5" onclick="
                                 window.history.back()
 
