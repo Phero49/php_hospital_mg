@@ -1,17 +1,16 @@
-<?php 
+<?php
 session_start(); // Start or resume the session
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 require('../db/dbConn.php');
 // Check if the 'username' session variable is set, indicating a logged-in session
-echo isset($_SESSION['user_id']);
-if (!isset($_SESSION['user_id']) ) {
-    if($_SESSION['role'] != 'dos'){
+if (!isset($_SESSION['user_id'])) {
+    if ($_SESSION['role'] != 'dos') {
 
-  header('Location:../index.html');
+        header('Location:../index.html');
     }
 
-} 
+}
 
 ?>
 
@@ -23,15 +22,18 @@ if (!isset($_SESSION['user_id']) ) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <title>Table - Brand</title>
     <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i&amp;display=swap">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i&amp;display=swap">
     <link rel="stylesheet" href="assets/fonts/fontawesome-all.min.css">
     <link rel="stylesheet" href="assets/css/Contact-Form-by-Moorcam.css">
 </head>
 
 <body id="page-top">
     <div id="wrapper">
-        <nav class="navbar navbar-dark align-items-start sidebar sidebar-dark accordion bg-gradient-primary p-0" style="background: #af7505;">
-            <div class="container-fluid d-flex flex-column p-0"><a class="navbar-brand d-flex justify-content-center align-items-center sidebar-brand m-0" href="#">
+        <nav class="navbar navbar-dark align-items-start sidebar sidebar-dark accordion bg-gradient-primary p-0"
+            style="background: #af7505;">
+            <div class="container-fluid d-flex flex-column p-0"><a
+                    class="navbar-brand d-flex justify-content-center align-items-center sidebar-brand m-0" href="#">
                     <div class="sidebar-brand-icon rotate-n-15"><i class="fas fa-hospital"></i></div>
                     <div class="sidebar-brand-text mx-3"><span>DYUNI SHS</span></div>
                 </a><a class="navbar-brand d-flex justify-content-center align-items-center sidebar-brand m-0" href="#">
@@ -40,104 +42,20 @@ if (!isset($_SESSION['user_id']) ) {
                 </a>
                 <hr class="sidebar-divider my-0">
                 <ul class="navbar-nav text-light" id="accordionSidebar">
-                    <li class="nav-item"><a class="nav-link" href="balancetable.html"><i class="fas fa-table"></i>&nbsp;Balance Table</a><a class="nav-link active" href="medicalrecords.html"><i class="fas fa-table"></i><span>&nbsp;Medical Records</span></a><a class="nav-link" href="queryinput.html"><i class="fas fa-table"></i><span>&nbsp;Query Inputs</span></a><a class="nav-link" href="index.html"><i class="fas fa-table"></i>&nbsp;Log Out</a></li>
+                    <li class="nav-item"><a class="nav-link" href="balancetable.html"><i
+                                class="fas fa-table"></i>&nbsp;Balance Table</a><a class="nav-link active"
+                            href="medicalrecords.html"><i class="fas fa-table"></i><span>&nbsp;Medical
+                                Records</span></a><a class="nav-link" href="queryinput.html"><i
+                                class="fas fa-table"></i><span>&nbsp;Query Inputs</span></a><a class="nav-link"
+                            href="index.html"><i class="fas fa-table"></i>&nbsp;Log Out</a></li>
                 </ul>
-                <div class="text-center d-none d-md-inline"><button class="btn rounded-circle border-0" id="sidebarToggle" type="button"></button></div>
+                <div class="text-center d-none d-md-inline"><button class="btn rounded-circle border-0"
+                        id="sidebarToggle" type="button"></button></div>
             </div>
         </nav>
         <div class="d-flex flex-column" id="content-wrapper">
             <div id="content">
-                <nav class="navbar navbar-light navbar-expand bg-white shadow mb-4 topbar static-top">
-                    <div class="container-fluid">
-                        <ul class="navbar-nav flex-nowrap ms-auto">
-                            <li class="nav-item dropdown d-sm-none no-arrow"><a class="dropdown-toggle nav-link" aria-expanded="false" data-bs-toggle="dropdown" href="#"><i class="fas fa-search"></i></a>
-                                <div class="dropdown-menu dropdown-menu-end p-3 animated--grow-in" aria-labelledby="searchDropdown">
-                                    <form class="me-auto navbar-search w-100">
-                                        <div class="input-group"><input class="bg-light form-control border-0 small" type="text" placeholder="Search for ...">
-                                            <div class="input-group-append"><button class="btn btn-primary py-0" type="button"><i class="fas fa-search"></i></button></div>
-                                        </div>
-                                    </form>
-                                </div>
-                            </li>
-                            <li class="nav-item dropdown no-arrow mx-1">
-                                <div class="nav-item dropdown no-arrow"><a class="dropdown-toggle nav-link" aria-expanded="false" data-bs-toggle="dropdown" href="#"><span class="badge bg-danger badge-counter">3+</span><i class="fas fa-bell fa-fw"></i></a>
-                                    <div class="dropdown-menu dropdown-menu-end dropdown-list animated--grow-in">
-                                        <h6 class="dropdown-header">alerts center</h6><a class="dropdown-item d-flex align-items-center" href="#">
-                                            <div class="me-3">
-                                                <div class="bg-primary icon-circle"><i class="fas fa-file-alt text-white"></i></div>
-                                            </div>
-                                            <div><span class="small text-gray-500">December 12, 2019</span>
-                                                <p>A new monthly report is ready to download!</p>
-                                            </div>
-                                        </a><a class="dropdown-item d-flex align-items-center" href="#">
-                                            <div class="me-3">
-                                                <div class="bg-success icon-circle"><i class="fas fa-donate text-white"></i></div>
-                                            </div>
-                                            <div><span class="small text-gray-500">December 7, 2019</span>
-                                                <p>$290.29 has been deposited into your account!</p>
-                                            </div>
-                                        </a><a class="dropdown-item d-flex align-items-center" href="#">
-                                            <div class="me-3">
-                                                <div class="bg-warning icon-circle"><i class="fas fa-exclamation-triangle text-white"></i></div>
-                                            </div>
-                                            <div><span class="small text-gray-500">December 2, 2019</span>
-                                                <p>Spending Alert: We've noticed unusually high spending for your account.</p>
-                                            </div>
-                                        </a><a class="dropdown-item text-center small text-gray-500" href="#">Show All Alerts</a>
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="nav-item dropdown no-arrow mx-1">
-                                <div class="nav-item dropdown no-arrow"><a class="dropdown-toggle nav-link" aria-expanded="false" data-bs-toggle="dropdown" href="#"><span class="badge bg-danger badge-counter">7</span><i class="fas fa-envelope fa-fw"></i></a>
-                                    <div class="dropdown-menu dropdown-menu-end dropdown-list animated--grow-in">
-                                        <h6 class="dropdown-header">alerts center</h6><a class="dropdown-item d-flex align-items-center" href="#">
-                                            <div class="dropdown-list-image me-3"><img class="rounded-circle" src="assets/img/avatars/avatar4.jpeg">
-                                                <div class="bg-success status-indicator"></div>
-                                            </div>
-                                            <div class="fw-bold">
-                                                <div class="text-truncate"><span>Hi there! I am wondering if you can help me with a problem I've been having.</span></div>
-                                                <p class="small text-gray-500 mb-0">Emily Fowler - 58m</p>
-                                            </div>
-                                        </a><a class="dropdown-item d-flex align-items-center" href="#">
-                                            <div class="dropdown-list-image me-3"><img class="rounded-circle" src="assets/img/avatars/avatar2.jpeg">
-                                                <div class="status-indicator"></div>
-                                            </div>
-                                            <div class="fw-bold">
-                                                <div class="text-truncate"><span>I have the photos that you ordered last month!</span></div>
-                                                <p class="small text-gray-500 mb-0">Jae Chun - 1d</p>
-                                            </div>
-                                        </a><a class="dropdown-item d-flex align-items-center" href="#">
-                                            <div class="dropdown-list-image me-3"><img class="rounded-circle" src="assets/img/avatars/avatar3.jpeg">
-                                                <div class="bg-warning status-indicator"></div>
-                                            </div>
-                                            <div class="fw-bold">
-                                                <div class="text-truncate"><span>Last month's report looks great, I am very happy with the progress so far, keep up the good work!</span></div>
-                                                <p class="small text-gray-500 mb-0">Morgan Alvarez - 2d</p>
-                                            </div>
-                                        </a><a class="dropdown-item d-flex align-items-center" href="#">
-                                            <div class="dropdown-list-image me-3"><img class="rounded-circle" src="assets/img/avatars/avatar5.jpeg">
-                                                <div class="bg-success status-indicator"></div>
-                                            </div>
-                                            <div class="fw-bold">
-                                                <div class="text-truncate"><span>Am I a good boy? The reason I ask is because someone told me that people say this to all dogs, even if they aren't good...</span></div>
-                                                <p class="small text-gray-500 mb-0">Chicken the Dog · 2w</p>
-                                            </div>
-                                        </a><a class="dropdown-item text-center small text-gray-500" href="#">Show All Alerts</a>
-                                    </div>
-                                </div>
-                                <div class="shadow dropdown-list dropdown-menu dropdown-menu-end" aria-labelledby="alertsDropdown"></div>
-                            </li>
-                            <div class="d-none d-sm-block topbar-divider"></div>
-                            <li class="nav-item dropdown no-arrow">
-                                <div class="nav-item dropdown no-arrow"><a class="dropdown-toggle nav-link" aria-expanded="false" data-bs-toggle="dropdown" href="#"><span class="d-none d-lg-inline me-2 text-gray-600 small">Dean of Students</span><img class="border rounded-circle img-profile" src="assets/img/avatars/avatar1.jpeg"></a>
-                                    <div class="dropdown-menu shadow dropdown-menu-end animated--grow-in"><a class="dropdown-item" href="#"><i class="fas fa-user fa-sm fa-fw me-2 text-gray-400"></i>&nbsp;Profile</a><a class="dropdown-item" href="#"><i class="fas fa-cogs fa-sm fa-fw me-2 text-gray-400"></i>&nbsp;Settings</a><a class="dropdown-item" href="#"><i class="fas fa-list fa-sm fa-fw me-2 text-gray-400"></i>&nbsp;Activity log</a>
-                                        <div class="dropdown-divider"></div><a class="dropdown-item" href="#"><i class="fas fa-sign-out-alt fa-sm fa-fw me-2 text-gray-400"></i>&nbsp;Logout</a>
-                                    </div>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-                </nav>
+
                 <div class="container-fluid">
                     <h3 class="text-dark mb-4">Medical Records</h3>
                     <div class="card shadow">
@@ -147,13 +65,18 @@ if (!isset($_SESSION['user_id']) ) {
                         <div class="card-body">
                             <div class="row">
                                 <div class="col-md-6 text-nowrap">
-                                    <div id="dataTable_length" class="dataTables_length" aria-controls="dataTable"></div><input type="search" id="medicalsearch" class="form-control form-control-sm" aria-controls="dataTable" placeholder="Search">
+                                    <div id="dataTable_length" class="dataTables_length" aria-controls="dataTable">
+                                    </div><input type="search" id="medicalsearch" class="form-control form-control-sm"
+                                        aria-controls="dataTable" placeholder="Search">
                                 </div>
                                 <div class="col-md-6">
-                                    <div class="text-md-end dataTables_filter" id="dataTable_filter"><input id="medicaldatesearch" class="form-select form-select-sm" placeholder="DATE" type="date"><label class="form-label"></label></div>
+                                    <div class="text-md-end dataTables_filter" id="dataTable_filter"><input
+                                            id="medicaldatesearch" class="form-select form-select-sm" placeholder="DATE"
+                                            type="date"><label class="form-label"></label></div>
                                 </div>
                             </div>
-                            <div class="table-responsive table mt-2" id="dataTable" role="grid" aria-describedby="dataTable_info">
+                            <div class="table-responsive table mt-2" id="dataTable" role="grid"
+                                aria-describedby="dataTable_info">
                                 <table class="table my-0" id="dataTable">
                                     <thead>
                                         <tr>
@@ -165,15 +88,32 @@ if (!isset($_SESSION['user_id']) ) {
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr></tr>
-                                        <tr></tr>
-                                        <tr>
-                                            <td>Uchizi Nyirongo</td>
-                                            <td>BScICT/00/000</td>
-                                            <td>Dental&nbsp;</td>
-                                            <td>2023/10/13<br></td>
-                                            <td>132,000</td>
+                                        <?php
+                                        $sql = "SELECT CONCAT(users.first_name,' ',users.last_name) as name, records.reg_number,records.service_name ,DATE(records.date) as 'date' ,(records.service_amount + records.medication_amount) as cost FROM records INNER JOIN Students ON Students.reg_number = records.reg_number INNER JOIN users ON users.user_id = Students.user_id;"
+                                        ;
+                                        $result = $conn->query($sql);
+
+
+                                   while ($row = $result->fetch_assoc()) {  
+?>
+  <tr>
+                                            <td><?php echo $row['name'] ?></td>
+                                            <td><?php echo $row['reg_number'] ?></td>
+                                            <td><?php echo $row['service_name'] ?>&nbsp;</td>
+                                            <td><?php echo $row['date'] ?><br></td>
+                                            <td><?php echo $row['cost'] ?></td>
                                         </tr>
+<?php
+
+
+                                   }
+
+
+                                        ?>
+
+                                        
+
+                                      
                                         <tr></tr>
                                         <tr></tr>
                                     </tbody>
