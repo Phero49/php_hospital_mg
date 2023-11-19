@@ -28,7 +28,6 @@ include('../db/dbConn.php')
                     <li class="nav-item"><a class="nav-link active" href="dashboard.php"><i class="fas fa-tachometer-alt"></i><span>Dashboard</span></a></li>
                     <li class="nav-item"><a class="nav-link" href="profile.html"><i class="fas fa-user"></i><span style="font-weight: bold;">User Mgmt</span></a></li>
                     <li class="nav-item"><a class="nav-link" href="table.php"><i class="fas fa-table"></i><span style="font-weight: bold;">Users</span></a></li>
-                    <li class="nav-item"><a class="nav-link" href="../index.html"><i class="far fa-user-circle"></i><span style="font-weight: bold;">Login</span></a></li>
                     <li class="nav-item"><a class="nav-link" href="../php/logout.php"><i class="fas fa-user-circle"></i><span style="font-weight: bold;">Log Out</span></a></li>
                 </ul>
                 <div class="text-center d-none d-md-inline"><button class="btn rounded-circle border-0" id="sidebarToggle" type="button"></button></div>
