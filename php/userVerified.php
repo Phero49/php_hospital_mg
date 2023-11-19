@@ -99,15 +99,7 @@ if (!isset($_SESSION['user_id'])) {
 
         <div class="col-md-9" style="padding-left: 1px;">
             <div class="" style="background-color: #af7503; padding: 20px; border-radius: 5px">
-                <nav class="navbar text-white">
-                    <div class="container-fluid">
-                        <h4>Student Verification</h4>
-                        <form role="search">
-                            <label for="inputPassword5" class="form-label">Search Here</label>
-                            <input class="form-control" type="search" placeholder="Search" aria-label="Search" />
-                        </form>
-                    </div>
-                </nav>
+            
             </div>
             <div class=" text-center">
                 <div class="row align-items-center justify-content-center" style="margin:0px">
