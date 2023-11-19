@@ -44,7 +44,7 @@ if (!isset($_SESSION['user_id'])) {
                 <ul class="navbar-nav text-light" id="accordionSidebar">
                     <li class="nav-item"><a class="nav-link" href="balancetable.php"><i
                                 class="fas fa-table"></i>&nbsp;Balance Table</a><a class="nav-link active"
-                            href="medicalrecords.html"><i class="fas fa-table"></i><span>&nbsp;Medical
+                            href="medicalrecords.php"><i class="fas fa-table"></i><span>&nbsp;Medical
                                 Records</span></a><a class="nav-link" href="queryinput.html"><i
                                 class="fas fa-table"></i><span>&nbsp;Query Inputs</span></a><a class="nav-link"
                             href="../php/logout.php"><i class="fas fa-table"></i>&nbsp;Log Out</a></li>

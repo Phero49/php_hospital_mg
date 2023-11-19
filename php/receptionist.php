@@ -70,7 +70,7 @@ if (!isset($_SESSION['user_id']) && $_SESSION['role'] != 'receptionist') {
 
               <button style="background-color: #f1b356
               ;" class="btn text-white" type="button">
-<a href="../html/medicalrecords.html" class="nav-link">
+<a href="../html/medicalrecords.php" class="nav-link">
     <i class="bi bi-database"></i> Records
 </a>
               
