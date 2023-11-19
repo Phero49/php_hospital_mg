@@ -37,9 +37,7 @@ include('../db/dbConn.php')
             <div id="content">
                 <nav class="navbar navbar-light navbar-expand bg-white shadow mb-4 topbar static-top">
                     <div class="container-fluid"><button class="btn btn-link d-md-none rounded-circle me-3" id="sidebarToggleTop" type="button"><i class="fas fa-bars"></i></button>
-                        <form class="d-none d-sm-inline-block me-auto ms-md-3 my-2 my-md-0 mw-100 navbar-search">
-                            <div class="input-group"><input class="bg-light form-control border-0 small" type="text" placeholder="Search for ..."><button class="btn btn-primary py-0" type="button" style="background: #af7505;border-color: #af7505;"><i class="fas fa-search"></i></button></div>
-                        </form>
+
                         <ul class="navbar-nav flex-nowrap ms-auto">
                             <li class="nav-item dropdown d-sm-none no-arrow"><a class="dropdown-toggle nav-link" aria-expanded="false" data-bs-toggle="dropdown" href="#"><i class="fas fa-search"></i></a>
                                 <div class="dropdown-menu dropdown-menu-end p-3 animated--grow-in" aria-labelledby="searchDropdown">
@@ -147,7 +145,6 @@ include('../db/dbConn.php')
                                             <div class="text-uppercase text-primary fw-bold text-xs mb-1"><span style="color: #af7505;">no of Employees</span></div>
                                             <div class="text-dark fw-bold h5 mb-0"><span><?php echo $res['stuff_count'] ?></span></div>
                                         </div>
-                                        <div class="col-auto"><i class="fas fa-calendar fa-2x text-gray-300"></i></div>
                                     </div>
                                 </div>
                             </div>
