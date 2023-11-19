@@ -15,7 +15,7 @@ if(! isset($_GET['id'])){
     http_response_code(400);
 
     // Provide an error message (optional)
-    echo "Bad Request: Missing required data.";
+    echo "error 400 Bad Request: Missing required data.";
 
     // Stop further execution
     exit;
@@ -97,20 +97,18 @@ foreach ($row as $key => $value) {
                                     ?>
                                
                                
-                            <div class="table-responsive table mt-2" id="dataTable" role="grid"
-                                aria-describedby="dataTable_info">
-                                <table class="table my-0" id="dataTable">
-                                    <thead>
-                                        <tr></tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr></tr>
-                                    </tbody>
-                                    <tfoot>
-                                        <tr></tr>
-                                    </tfoot>
-                                </table>
-                            </div>
+                          <div>
+
+                          <button
+                              class="btn btn-primary btn-sm"
+                              role="button"
+                              id="billpayment"
+                              style="width: 100px; background: #af7505"
+                              >                                <a class="nav-link" href="../php/receptionist.php">Back</a>
+</button
+                            >
+                          
+                          </div>
                         </div>
                     </div>
                 </div>
