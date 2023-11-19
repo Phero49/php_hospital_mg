@@ -41,7 +41,7 @@
             <a class="nav-link active" href="table.php"><i class="fas fa-table"></i><span
                 style="font-weight: bold">Users</span></a>
           </li>
-        
+         
           <li class="nav-item">
             <a class="nav-link" href="../php/logout.php"><i class="fas fa-user-circle"></i><span style="font-weight: bold">Log
                 Out</span></a>
