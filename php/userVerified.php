@@ -5,7 +5,7 @@ ini_set('display_errors', 1);
 require('../db/dbConn.php');
 // Check if the 'username' session variable is set, indicating a logged-in session
 if (!isset($_SESSION['user_id'])) {
-    header('Location:../login.html');
+    header('Location:../index.html');
 }
 ?>
 

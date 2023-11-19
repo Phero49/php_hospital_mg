@@ -6,9 +6,19 @@ ini_set('display_errors', 1);
 
 if (!isset($_SESSION['user_id'])) {
     if( $_SESSION['role'] != 'receptionist' ){
-            header('Location:../login.html');
+            header('Location:../index.html');
 
     }
+}
+
+if(! isset($_GET['id'])){
+    http_response_code(400);
+
+    // Provide an error message (optional)
+    echo "Bad Request: Missing required data.";
+
+    // Stop further execution
+    exit;
 }
 ?>
 <!DOCTYPE html>
@@ -62,6 +72,7 @@ if (!isset($_SESSION['user_id'])) {
                             <div class="row text-capitalize">
                                 <?php
                                 $id = $_GET['id'];
+                                
                                 $sql = "SELECT  records.date as 'timestamp',
                               records.service_amount, CONCAT(users.first_name , ' ',users.last_name) as 
                               'student_name', records.service_name, records.medication_amount, 

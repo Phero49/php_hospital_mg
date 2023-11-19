@@ -5,7 +5,7 @@ ini_set('display_errors', 1);
 
 if (!isset($_SESSION['user_id'])) {
     if ($_SESSION['role'] != 'dos') {
-        header('Location:../login.html');
+        header('Location:../index.html');
 
     }
 } ?>
