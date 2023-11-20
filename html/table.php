@@ -1,4 +1,14 @@
-<?php session_start()  ?>
+<?php session_start() ;
+// Check if the 'username' session variable is set, indicating a logged-in session
+if (!isset($_SESSION['user_id'])) {
+
+  if($_SESSION['role'] != 'admin'){
+  header('Location:../index.html');
+
+  }
+} 
+
+?>
 <!DOCTYPE html>
 <html>
 
