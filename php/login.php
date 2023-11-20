@@ -56,7 +56,7 @@ $url = '../html/medicalrecords.php';
         header("Location:$url");
 
       }else{
-       header("Location: ../html/login.html?error= Password doesn`t match.");
+       header("Location: ../html/adminlogin.html?error= Password doesn`t match.");
 
       }
         }
