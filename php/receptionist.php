@@ -5,10 +5,12 @@ error_reporting(E_ALL);
 ini_set('display_errors', 1);
 require('../db/dbConn.php');
 // Check if the 'username' session variable is set, indicating a logged-in session
-if (!isset($_SESSION['user_id']) && $_SESSION['role'] != 'receptionist') {
+if (!isset($_SESSION['user_id'])) {
 
-  
+  if($_SESSION['role'] != 'receptionist'){
   header('Location:../index.html');
+
+  }
 } 
 
 ?>
