@@ -76,10 +76,14 @@ if (!isset($_GET['uid'])) {
       <div id="content">
         <?php
         $uid = $_GET['uid'];
+      
+
         $sql = "SELECT `first_name`,`last_name`,`gender`,`dob`,`avatar` ,s.reg_number,
                          uc.phone_number,uc.email ,s.graduation_year,s.faculty,s.reg_number
                           FROM users INNER JOIN user_contact as uc INNER JOIN Students as s 
                           WHERE users.user_id = '$uid';";
+
+
         $result = $conn->query($sql, );
         if ($result->num_rows > 0) {
           $row = $result->fetch_assoc();

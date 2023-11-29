@@ -60,7 +60,7 @@ if (!isset($_SESSION['user_id'])) {
                                 name="role"
                               >
                                 <option selected value="student">
-                                  Students
+                                  Student
                                 </option>
                                 <option value="dos">DOS</option>
                                 <option value="admin">Admin</option>
@@ -182,7 +182,7 @@ if (!isset($_SESSION['user_id'])) {
     Select user types
   </button>
   <ul class="dropdown-menu dropdown-menu-dark">
-    <li><a class="dropdown-item active" href="./table.php?role=students">students</a></li>
+    <li><a class="dropdown-item active" href="./table.php?role=student">student</a></li>
     <li><a class="dropdown-item" href="./table.php?role=admin">admins</a></li>
     <li><a class="dropdown-item" href="./table.php?role=dos">dos</a></li>
     <li><a class="dropdown-item" href="./table.php?role=receptionist">receptionist</a></li>
@@ -256,8 +256,8 @@ $role = $_GET['role'];
                         <th>Last Name</th>
                         <th>Role</th>
                         <th>Gender</th>
-                        <th>ACTION</th>
-                        <th>ACTION</th>
+                        <th >ACTION</th>
+                        <th >ACTION</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -286,7 +286,8 @@ $role = $_GET['role'];
                           <a
                             class="btn btn-primary"
                             role="button"
-                            style="background: #af7505"
+                            
+                            style="background: #af7505; display: <?php echo $role == 'student' ? 'block' : 'none'; ?>;"
                             href="editProfile.php?uid=<?php echo $row['user_id'] ?>"
                             >EDIT</a
                           >
@@ -294,11 +295,12 @@ $role = $_GET['role'];
                         <td>
                           <button
                             id="<?php echo $row['user_id']  ?>"
+                           
                             data-bs-toggle="modal"
                             data-bs-target="#exampleModal"
                             onclick="deleteUser(event,'<?php echo $row['first_name']   ?>','<?php echo $row['last_name']   ?>')"
                             class="btn btn-primary text-uppercase delete"
-                            style="background: #af7505"
+                            style="background: #af7505;"
                           >
                             Archive
                           </button>
