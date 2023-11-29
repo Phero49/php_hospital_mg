@@ -59,7 +59,7 @@ if (!isset($_SESSION['user_id'])) {
                                 id="role"
                                 name="role"
                               >
-                                <option selected value="students">
+                                <option selected value="student">
                                   Students
                                 </option>
                                 <option value="dos">DOS</option>
@@ -200,7 +200,7 @@ if (!isset($_SESSION['user_id'])) {
                   style="--bs-primary: #af7505; --bs-primary-rgb: 175, 117, 5"
                 >
                 <?php 
-                $role = 'students';
+                $role = 'student';
                 if(isset($_GET['role'])){
 $role = $_GET['role'];
                 }
