@@ -41,15 +41,15 @@ if (!isset($_SESSION['user_id'])) {
                                 class="fas fa-table"></i>&nbsp;Medical Records&nbsp;</a><a class="nav-link active"
                             href="balancetable.php"><i class="fas fa-table"></i><span>Balance</span></a><a
                             class="nav-link" href="queryinput.html"><i class="fas fa-table"></i><span>Query
-                                Input</span></a><a class="nav-link" href=""><i
+                                Input</span></a><a class="nav-link" href="../php/logout.php"><i
                                 class="fas fa-table"></i><span>&nbsp;Log Out</span></a></li>
                 </ul>
                 <div class="text-center d-none d-md-inline"><button class="btn rounded-circle border-0"
                         id="sidebarToggle" type="button"></button></div>
             </div>
         </nav>
-        <div class="d-flex flex-column" id="content-wrapper">
-            <div id="content">
+        <div class="d-flex flex-column mt-5" id="content-wrapper">
+            <div id="content ">
         
                 <div class="container-fluid">
                     <div class="row flex-row">
@@ -66,18 +66,7 @@ if (!isset($_SESSION['user_id'])) {
                             <p class="text-primary m-0 fw-bold" style="color: #af7505;color: #af7505;">Balance Info</p>
                         </div>
                         <div class="card-body">
-                            <div class="row">
-                                <div class="col-md-6 text-nowrap">
-                                    <div id="dataTable_length" class="dataTables_length" aria-controls="dataTable">
-                                        <input type="search" id="balancesearch" class="form-control form-control-sm"
-                                            aria-controls="dataTable" placeholder="Search"></div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="text-md-end dataTables_filter" id="dataTable_filter"><input
-                                            id="balancedatesearch" class="form-select form-select-sm"
-                                            placeholder="DATE"><label class="form-label"></label></div>
-                                </div>
-                            </div>
+                           
                             <div class="table-responsive table mt-2" id="dataTable" role="grid"
                                 aria-describedby="dataTable_info">
                                 <table class="table my-0" id="dataTable">
@@ -132,8 +121,9 @@ while ($row = $result->fetch_assoc()) {
         </div><a class="border rounded d-inline scroll-to-top" href="#page-top"><i class="fas fa-angle-up"></i></a>
     </div>
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
-    <script src="assets/js/bs-init.js"></script>
     <script src="assets/js/theme.js"></script>
+    <script src="../exportpdf.js"></script>
+  
 </body>
 
 </html>

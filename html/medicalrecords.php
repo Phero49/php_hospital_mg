@@ -63,21 +63,47 @@ if (!isset($_SESSION['user_id'])) {
                             <p class="text-primary m-0 fw-bold" style="color: #af7505;">Medical Info</p>
                         </div>
                         <div class="card-body">
-                            <div class="row">
+                        <form action="./medicalrecords.php" method="get">
+
+                          <div class="row">
                                 <div class="col-md-6 text-nowrap">
                                     <div id="dataTable_length" class="dataTables_length" aria-controls="dataTable">
-                                    </div><input type="search" id="medicalsearch" class="form-control form-control-sm"
+                                    </div><input type="search" name="user_name" id="medicalsearch" class="form-control form-control-sm"
                                         aria-controls="dataTable" placeholder="Search">
                                 </div>
                                 <div class="col-md-6">
-                                    <div class="text-md-end dataTables_filter" id="dataTable_filter"><input
-                                            id="medicaldatesearch" class="form-select form-select-sm" placeholder="DATE"
+                                    <div class="text-md-end dataTables_filter"  id="dataTable_filter"><input
+                                            id="medicaldatesearch" name="date" class="form-select form-select-sm" placeholder="DATE"
                                             type="date"><label class="form-label"></label></div>
                                 </div>
                             </div>
+
+                        </form>   
+                      
                             <div class="table-responsive table mt-2" id="dataTable" role="grid"
                                 aria-describedby="dataTable_info">
-                                <table class="table my-0" id="dataTable">
+                                
+                                        <?php
+                                        $sql = "SELECT CONCAT(users.first_name,' ',users.last_name) as name, records.reg_number,records.service_name ,DATE(records.date) as 'date' ,(records.service_amount + records.medication_amount) as cost FROM records INNER JOIN Students ON Students.reg_number = records.reg_number INNER JOIN users ON users.user_id = Students.user_id;"
+                                        ;
+
+
+                                        if(isset($_GET["user_name"])) {
+                                            $userName = $_GET["user_name"];
+                                            $firstname =  str_split($userName)[0];
+                                            $lastname = str_split($userName)[1];
+                                         $sql =    "SELECT CONCAT(users.first_name,' ',users.last_name) as name, records.reg_number,records.service_name ,DATE(records.date) as 'date' ,(records.service_amount + records.medication_amount) as cost FROM records INNER JOIN Students ON Students.reg_number = records.reg_number
+                                             INNER JOIN users ON users.user_id = Students.user_id WHERE first_name LIKE '%$firstname%' OR last_name LIKE '%$lastname%';"
+                                            ;
+                                        }
+
+                                       
+                                        $result = $conn->query($sql);
+
+
+if($result->num_rows > 0) {
+?>
+       <table class="table my-0" id="dataTable">
                                     <thead>
                                         <tr>
                                             <th>Name</th>
@@ -87,13 +113,7 @@ if (!isset($_SESSION['user_id'])) {
                                             <th>Cost (MWK)</th>
                                         </tr>
                                     </thead>
-                                    <tbody>
-                                        <?php
-                                        $sql = "SELECT CONCAT(users.first_name,' ',users.last_name) as name, records.reg_number,records.service_name ,DATE(records.date) as 'date' ,(records.service_amount + records.medication_amount) as cost FROM records INNER JOIN Students ON Students.reg_number = records.reg_number INNER JOIN users ON users.user_id = Students.user_id;"
-                                        ;
-                                        $result = $conn->query($sql);
-
-
+                                    <tbody> <?php
                                    while ($row = $result->fetch_assoc()) {  
 ?>
   <tr>
@@ -108,19 +128,26 @@ if (!isset($_SESSION['user_id'])) {
 
                                    }
 
+?>
 
-                                        ?>
 
-                                        
 
-                                      
-                                        <tr></tr>
+                                   <tr></tr>
                                         <tr></tr>
                                     </tbody>
                                     <tfoot>
                                         <tr></tr>
                                     </tfoot>
-                                </table>
+                                </table>    <?php 
+                                      }      else {
+
+                                        echo " <h5 class='text-center'> no such record your looking for was fount in the database</h5>  ";
+                                      }       ?>
+
+                                        
+
+                                      
+                                    
                             </div>
                         </div>
                     </div>

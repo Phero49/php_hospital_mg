@@ -84,24 +84,76 @@ const setting = {
  }
  
 
- onload = (evt)=>{
+ onload =  async (evt)=>{
+	
+
+const res = await	   fetch('../php/getRecords.php')
+console.log(res)
+	const data = await res.json();
+	const labels = [
+		"Jan",
+		"Feb",
+		"Mar",
+		"Apr",
+		"May",
+		"Jun",
+		"Jul",
+		"Aug",
+		"Sep",
+		"Oct",
+		"Nov",
+		"Dec"
+	  ];
+	  
+console.log(data)
+
+var ChartData = Array.from({length:12},(_)=>0)
+for (let index = 0; index < 12; index++) {
+			const record = data[index]
+			
+			
+if(record != undefined ){
+const month = parseInt(record['month']) -1
+ChartData[month] = parseInt(record['count'])
+
+console.log(ChartData[month])
+}
+
+	
+}
+
+
+
+	
+	console.log(ChartData)
 	const canvas =  document.querySelector('canvas')
 	console.log(canvas)
 	new Chart(canvas, {
 		type: 'bar',
 		data: {
-		  labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+		  labels: labels,
 		  datasets: [{
-			label: '# of Votes',
-			data: [12, 19, 3, 5, 2, 3],
+			label: 'total monthly visits',
+			data: ChartData,
 			borderWidth: 1
 		  }]
 		},
+		
 		options: {
 		  scales: {
 			y: {
-			  beginAtZero: true
-			}
+				title: {
+					display: true,
+					text: 'visits'
+				  },
+			  beginAtZero: true,
+			  ticks: {
+				// forces step size to be 50 units
+				stepSize: 1
+			  }
+			},
+			
+	
 		  }
 		}
 	  });
