@@ -170,38 +170,10 @@ if (!isset($_SESSION['user_id'])) {
                         role="button"
                         style="background: #af7505"
                       >
-                        add multiple students
+                        add new users
                       </button>
                     </div>
-                    <div class="mx-3">
-                      <button
-                        class="btn btn-primary"
-                        role="button"
-                        style="background: #af7505"
-                      >
-                        add admin
-                      </button>
-                    </div>
-
-                    <div>
-                      <button
-                        class="btn btn-primary"
-                        role="button"
-                        style="background: #af7505"
-                      >
-                        add dos
-                      </button>
-                    </div>
-
-                    <div class="mx-3">
-                      <button
-                        class="btn btn-primary ml-3"
-                        role="button"
-                        style="background: #af7505"
-                      >
-                        add new receptionist
-                      </button>
-                    </div>
+         
                   </div>
                 </div>
               </div>
