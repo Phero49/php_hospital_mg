@@ -1,6 +1,6 @@
 <?php
 session_start(); // Start or resume the session
-error_reporting(E_ALL);
+error_reporting();
 ini_set('display_errors', 1);
 require('../db/dbConn.php');
 // Check if the 'username' session variable is set, indicating a logged-in session
@@ -83,17 +83,26 @@ if (!isset($_SESSION['user_id'])) {
                             <div class="table-responsive table mt-2" id="dataTable" role="grid"
                                 aria-describedby="dataTable_info">
                                 
-                                        <?php
-                                        $sql = "SELECT CONCAT(users.first_name,' ',users.last_name) as name, records.reg_number,records.service_name ,DATE(records.date) as 'date' ,(records.service_amount + records.medication_amount) as cost FROM records INNER JOIN Students ON Students.reg_number = records.reg_number INNER JOIN users ON users.user_id = Students.user_id;"
+                   <?php
+
+     
+try {
+        $sql = "SELECT CONCAT(users.first_name,' ',users.last_name) as name, records.reg_number,records.service_name ,DATE(records.date) as 'date' ,(records.service_amount + records.medication_amount) as cost FROM records INNER JOIN Students ON Students.reg_number = records.reg_number INNER JOIN users ON users.user_id = Students.user_id;"
                                         ;
 
 
                                         if(isset($_GET["user_name"])) {
                                             $userName = $_GET["user_name"];
-                                            $firstname =  str_split($userName)[0];
-                                            $lastname = str_split($userName)[1];
+                                            $arr = explode(' ', $userName);
+                                            $firstname = '';
+                                            $lastname = '';
+if(count($arr) >= 2){
+   $firstname =  $arr[0];
+                                            $lastname = $arr[1];
+}
+                                         
                                          $sql =    "SELECT CONCAT(users.first_name,' ',users.last_name) as name, records.reg_number,records.service_name ,DATE(records.date) as 'date' ,(records.service_amount + records.medication_amount) as cost FROM records INNER JOIN Students ON Students.reg_number = records.reg_number
-                                             INNER JOIN users ON users.user_id = Students.user_id WHERE first_name LIKE '%$firstname%' OR last_name LIKE '%$lastname%';"
+                                             INNER JOIN users ON users.user_id = Students.user_id WHERE first_name = '$firstname' AND last_name  = '$lastname';"
                                             ;
                                         }
 
@@ -102,7 +111,7 @@ if (!isset($_SESSION['user_id'])) {
 
 
 if($result->num_rows > 0) {
-?>
+?>                                                   
        <table class="table my-0" id="dataTable">
                                     <thead>
                                         <tr>
@@ -142,7 +151,10 @@ if($result->num_rows > 0) {
                                       }      else {
 
                                         echo " <h5 class='text-center'> no such record your looking for was fount in the database</h5>  ";
-                                      }       ?>
+                                      }//code...
+} catch (e) {
+    //throw $th;
+}        ?>
 
                                         
 

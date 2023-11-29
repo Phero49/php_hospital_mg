@@ -47,7 +47,7 @@ if(! isset($_GET['id'])){
                 <ul class="navbar-nav text-light" id="accordionSidebar">
                     <li class="nav-item"><a class="nav-link" href="paymentform.html"><i
                                 class="fab fa-wpforms"></i><span>&nbsp;Bill Form</span></a></li>
-                    <li class="nav-item"><a class="nav-link active" href="Billpayment.html"><i
+                    <li class="nav-item"><a class="nav-link active" href="Billpayment.php"><i
                                 class="fas fa-table"></i><span>Bill Details&nbsp;</span></a><a class="nav-link"
                             href="index.html"></a></li>
                 </ul>

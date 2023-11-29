@@ -175,6 +175,20 @@ if (!isset($_SESSION['user_id'])) {
                     </div>
          
                   </div>
+
+                  <div class="mx-3">
+                  <div class="dropdown">
+  <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+    Select user types
+  </button>
+  <ul class="dropdown-menu dropdown-menu-dark">
+    <li><a class="dropdown-item active" href="./table.php?role=students">students</a></li>
+    <li><a class="dropdown-item" href="./table.php?role=admin">admins</a></li>
+    <li><a class="dropdown-item" href="./table.php?role=dos">dos</a></li>
+    <li><a class="dropdown-item" href="./table.php?role=receptionist">receptionist</a></li>
+  </ul>
+</div>
+                  </div>
                 </div>
               </div>
             </nav>
@@ -185,7 +199,13 @@ if (!isset($_SESSION['user_id'])) {
                   class="text-primary fw-bold m-0"
                   style="--bs-primary: #af7505; --bs-primary-rgb: 175, 117, 5"
                 >
-                  student Infomation
+                <?php 
+                $role = 'students';
+                if(isset($_GET['role'])){
+$role = $_GET['role'];
+                }
+                
+             echo $role;   ?>   Infomation
                 </p>
               </div>
               <div class="card-body">
@@ -245,7 +265,7 @@ if (!isset($_SESSION['user_id'])) {
                         <?php
                     include('../db/dbConn.php');
                     
-                    $sql = "SELECT `user_id`, `avatar`, `role`, `first_name`, `last_name`, `gender` FROM `users` ORDER BY created_on DESC LIMIT 0,30;";
+                    $sql = "SELECT `user_id`, `avatar`, `role`, `first_name`, `last_name`, `gender` FROM `users` WHERE role = '$role' ORDER BY created_on DESC LIMIT 0,30;";
                     $result = mysqli_query($conn, $sql);
                     while ($row = mysqli_fetch_assoc($result)) {
       
