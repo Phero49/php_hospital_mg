@@ -1,4 +1,6 @@
 <?php session_start() ;
+error_reporting(E_ALL);
+
 // Check if the 'username' session variable is set, indicating a logged-in session
 if (!isset($_SESSION['user_id'])) {
 
@@ -205,7 +207,7 @@ if (!isset($_SESSION['user_id'])) {
 $role = $_GET['role'];
                 }
                 
-             echo $role;   ?>   Infomation
+             echo $role;   ?>   
                 </p>
               </div>
               <div class="card-body">
@@ -232,14 +234,21 @@ $role = $_GET['role'];
                     <div
                       class="text-md-end dataTables_filter"
                       id="dataTable_filter"
-                    >
-                      <label class="form-label"
-                        ><input
+                    > <form method="get" action="./table.php">
+                          <label class="form-label"
+                        >
+                       
+                        <input
                           type="search"
+                          name="search"
                           class="form-control form-control-sm"
                           aria-controls="dataTable"
-                          placeholder="Search"
-                      /></label>
+                          placeholder="full name"
+                      /></label> 
+
+                      <button type="submit" style="display:none"></button>
+                        </form>
+                     
                     </div>
                   </div>
                 </div>
@@ -249,6 +258,34 @@ $role = $_GET['role'];
                   role="grid"
                   aria-describedby="dataTable_info"
                 >
+
+                <?php
+                    include('../db/dbConn.php');
+                    
+                    $sql = "SELECT `user_id`, `avatar`, `role`, `first_name`, `last_name`, `gender` FROM `users` WHERE role = '$role' ";
+                     if(isset($_GET['search']) ){
+                      $s = $_GET['search'];
+                      $splitString =  explode(' ',$s);
+                      $firstName = '';
+                      $lastName ='';
+                      if(count($splitString) > 1){
+                        $firstName = $splitString[0];
+                        $lastName = $splitString[1];
+                        $sql.="AND first_name = '$firstName' AND last_name = '$lastName'";
+                      }
+
+                    
+                     
+                     }
+
+                     $sql.=' ORDER BY created_on DESC LIMIT 0,30;';
+                                 
+  
+                    $result = mysqli_query($conn, $sql);
+                    
+if($result->num_rows > 0){
+echo 'wrong';
+  ?>
                   <table class="table my-0" id="dataTable">
                     <thead>
                       <tr>
@@ -262,11 +299,8 @@ $role = $_GET['role'];
                     </thead>
                     <tbody>
                       <tr>
-                        <?php
-                    include('../db/dbConn.php');
-                    
-                    $sql = "SELECT `user_id`, `avatar`, `role`, `first_name`, `last_name`, `gender` FROM `users` WHERE role = '$role' ORDER BY created_on DESC LIMIT 0,30;";
-                    $result = mysqli_query($conn, $sql);
+                     <?php
+
                     while ($row = mysqli_fetch_assoc($result)) {
       
            ?>
@@ -315,6 +349,10 @@ $role = $_GET['role'];
                       <tr></tr>
                     </tfoot>
                   </table>
+                  <?php }
+                  else{
+                    echo "<h5 class='text-center'>no results found for your query  </h5> ";
+                  } ?>
                 </div>
               </div>
             </div>
