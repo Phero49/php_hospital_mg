@@ -46,7 +46,7 @@ if (!isset($_SESSION['user_id'])) {
                                 class="fas fa-table"></i>&nbsp;Balance Table</a><a class="nav-link active"
                             href="medicalrecords.php"><i class="fas fa-table"></i><span>&nbsp;Medical
                                 Records</span></a><a class="nav-link" href="queryinput.html"><i
-                                class="fas fa-table"></i><span>&nbsp;Query Inputs</span></a><a class="nav-link"
+                                class="fas fa-table"></i><span>&nbsp; total cost</span></a><a class="nav-link"
                             href="../php/logout.php"><i class="fas fa-table"></i>&nbsp;Log Out</a></li>
                 </ul>
                 <div class="text-center d-none d-md-inline"><button class="btn rounded-circle border-0"
