@@ -7,6 +7,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (isset($_FILES["csv"]) && $_FILES["csv"]["error"] == UPLOAD_ERR_OK) {
         // Get the uploaded file
         $csvFile = $_FILES["csv"]["tmp_name"];
+        $role = $_POST['role'];
 
         // Read the CSV file
         $csvData = array_map('str_getcsv', file($csvFile));
@@ -46,7 +47,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
              
                 $department = $row['department'];
-                $role = $row['role'];
+             //   $role = $row['role'];
                 $gender = $row['gender'];
                 $avatar = null;
         $res =   $conn->query("SELECT `email` FROM `user_contact` WHERE email = '$email'");
@@ -62,7 +63,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $stmt->bind_param('sssss', $avatar, $firstName,$lastName,$gender,$dateofbirth); // Assuming faculty corresponds to the gender or role in your case
          
               if(  $stmt->execute() == true){
-            $id =  "SELECT `user_id` FROM users WHERE created_on > NOW() - INTERVAL 5 SECOND;";
+            $id =  "SELECT `user_id` FROM users WHERE created_on > NOW() - INTERVAL 1 SECOND; ";
             
             $result = $conn->query( $id);
             
@@ -77,9 +78,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $stmt->execute(); 
                 
 
-                if($role == 'students'){
-                                $insertStudentData =  "INSERT INTO `Students`(`reg_number`, `user_id`, `graduation_year`, `enrollment_year`, `faculty`) VALUES (?,?,?,?,?)";
-
+                if($role == 'student'){
+                $insertStudentData =  "INSERT INTO `Students`(`reg_number`, `user_id`, `graduation_year`, `enrollment_year`, `faculty`) VALUES (?,?,?,?,?)";
+$ckkckk;
                 $stmt = $conn->prepare($insertStudentData);
                 $stmt->bind_param("sssss",$regNumber,$user_id,$graduationyear,$enrollment,$department);
                
@@ -91,15 +92,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     $stm->bind_param('ss',$email,$user_id);
                     $stmt->execute();
                 }
-
    
             
             }
-        
+                        $conn->commit();
+
             } 
            }   //code...
                 } catch (\Throwable $th) {
-                //  throw $th;
+                    $conn->rollback();
+                 throw $th;
                 } 
                 
         

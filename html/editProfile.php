@@ -78,10 +78,25 @@ if (!isset($_GET['uid'])) {
         $uid = $_GET['uid'];
       
 
-        $sql = "SELECT `first_name`,`last_name`,`gender`,`dob`,`avatar` ,s.reg_number,
-                         uc.phone_number,uc.email ,s.graduation_year,s.faculty,s.reg_number
-                          FROM users INNER JOIN user_contact as uc INNER JOIN Students as s 
-                          WHERE users.user_id = '$uid';";
+        $sql = "SELECT
+        `first_name`,
+        `last_name`,
+        `gender`,
+        `dob`,
+        `avatar`,
+        s.reg_number,
+        uc.phone_number,
+        uc.email,
+        s.graduation_year,
+        s.faculty
+    FROM
+        users
+    INNER JOIN
+        user_contact as uc ON uc.user_id = users.user_id
+    INNER JOIN
+        Students as s ON s.user_id = users.user_id
+    WHERE
+        users.user_id ='$uid';";
 
 
         $result = $conn->query($sql, );
