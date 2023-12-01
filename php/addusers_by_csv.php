@@ -62,21 +62,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             
                     if ($stmt->execute()) {
                         $stmt->close();
-                        $id = "SELECT `user_id` FROM users WHERE created_on > NOW() - INTERVAL 1 SECOND; ";
+                        $id = "SELECT `user_id` FROM users WHERE created_on > NOW() - INTERVAL 1 SECOND AND first_name = '$firstName' AND last_name = '$lastName' AND dob='$dateofbirth' ; ";
                         $result = $conn->query($id);
             
                         if ($result->num_rows > 0) {
                             $row = $result->fetch_assoc();
                             $user_id = $row["user_id"];
               if ($role == 'student') {
-                                $insertStudentData =  "INSERT INTO `Students`(`reg_number`, `user_id`, `enrollment_year`, `faculty`) VALUES (?,?,?,?)";
-                                $stmt2 = $conn->prepare($insertStudentData);
-                                $stmt2->bind_param("ssss", $regNumber, $user_id, $enrollment, $department);
-            
-                                if ($stmt2->execute() == true) {
-                                  echo 'inserted fine';
+                                $insertStudentData =  "INSERT INTO `Students`(`reg_number`, `user_id`, `enrollment_year`, `faculty`) VALUES ( '$regNumber', '$user_id', '$enrollment', '$department')";
+                                $result = $conn->query($insertStudentData) ;
+                                if ($result == true) {
+                               //   echo "<hr/>inserted fine <br/>  $user_id <br/><hr/>" ;
 
-                                    $stmt2->close();
+                                   
                                 } else {
                                     // Rollback the transaction on failure
                                     $conn->rollback();
@@ -94,6 +92,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                           
                         }
                     }
+                    else{
+                     //   echo "filed $firstName";
+                    }
                 }
             
                 // Commit the transaction if all queries were successful
@@ -106,7 +107,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             
         
         }
-      // header("Location:../html/table.php?role=$role");
+       header("Location:../html/table.php?role=$role");
     } else {
         echo "Error uploading file.";
     }
