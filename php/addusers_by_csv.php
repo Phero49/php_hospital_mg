@@ -30,83 +30,83 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
 
         // Display the associative array
-        foreach ($assocData as $row) {
-              try {
+        for ($i = 0; $i < count($assocData); $i++) {
+            $row = $assocData[$i];
+        
+            try {
+                // Start a transaction
+                $conn->begin_transaction();
             
-                
                 $regNumber = $row['reg_number'];
                 $firstName = $row['first_name'];
-                $enrollment =$row['enrollment'];
+                $enrollment = $row['enrollment'];
                 $lastName = $row['last_name'];
                 $phoneNumber = $row['phone_number'];
                 $email = $row['email'];
-                
                 $dateofbirth = date_create($row['birthday']);
-                 $dob  = date_format( $dateofbirth == false || $dateofbirth == true ? date_create('2000/07/9'):$dateofbirth,'Y/n/j');
-              $dateofbirth = $dob;
-
-             
+            
+                $dob = date_format($dateofbirth, 'Y/n/j');
+                $dateofbirth = $dob;
+            
                 $department = $row['department'];
-             //   $role = $row['role'];
                 $gender = $row['gender'];
                 $avatar = null;
-        $res =   $conn->query("SELECT `email` FROM `user_contact` WHERE email = '$email'");
-        echo  $res->num_rows;
-        if($res->num_rows == 0){
-             $conn->begin_transaction();
-
-                $sql = "INSERT INTO users (role, avatar, first_name, last_name, gender, dob)
-                VALUES ('$role',?,?,?,?, ?)";
-                $stmt = $conn->prepare($sql);
-
-                // Bind parameters
-                $stmt->bind_param('sssss', $avatar, $firstName,$lastName,$gender,$dateofbirth); // Assuming faculty corresponds to the gender or role in your case
-         
-              if(  $stmt->execute() == true){
-            $id =  "SELECT `user_id` FROM users WHERE created_on > NOW() - INTERVAL 1 SECOND; ";
             
-            $result = $conn->query( $id);
+                $res = $conn->query("SELECT `email` FROM `user_contact` WHERE email = '$email'");
+                if ($res->num_rows == 0) {
+                    $sql = "INSERT INTO users (role, avatar, first_name, last_name, gender, dob)
+                            VALUES ('$role',?,?,?,?, ?)";
+                    $stmt = $conn->prepare($sql);
+                    // Bind parameters
+                    $stmt->bind_param('sssss', $avatar, $firstName, $lastName, $gender, $dateofbirth);
             
-            if( $result->num_rows > 0 ){
-                
-                $row = $result->fetch_assoc();
-                $user_id = $row["user_id"];
+                    if ($stmt->execute()) {
+                        $stmt->close();
+                        $id = "SELECT `user_id` FROM users WHERE created_on > NOW() - INTERVAL 1 SECOND; ";
+                        $result = $conn->query($id);
             
-                $contactQuery  =  "INSERT INTO `user_contact`( `user_id`, `phone_number`, `email`) VALUES (?,?,?)";
-                $stmt = $conn->prepare($contactQuery);
-                $stmt->bind_param("sss",$user_id,$phoneNumber,$email);
-                $stmt->execute(); 
-                
+                        if ($result->num_rows > 0) {
+                            $row = $result->fetch_assoc();
+                            $user_id = $row["user_id"];
+              if ($role == 'student') {
+                                $insertStudentData =  "INSERT INTO `Students`(`reg_number`, `user_id`, `enrollment_year`, `faculty`) VALUES (?,?,?,?)";
+                                $stmt2 = $conn->prepare($insertStudentData);
+                                $stmt2->bind_param("ssss", $regNumber, $user_id, $enrollment, $department);
+            
+                                if ($stmt2->execute() == true) {
+                                  echo 'inserted fine';
 
-                if($role == 'student'){
-                $insertStudentData =  "INSERT INTO `Students`(`reg_number`, `user_id`, `graduation_year`, `enrollment_year`, `faculty`) VALUES (?,?,?,?,?)";
-$ckkckk;
-                $stmt = $conn->prepare($insertStudentData);
-                $stmt->bind_param("sssss",$regNumber,$user_id,$graduationyear,$enrollment,$department);
-               
-                $stmt->execute(); 
+                                    $stmt2->close();
+                                } else {
+                                    // Rollback the transaction on failure
+                                    $conn->rollback();
+                                    echo "Failed to insert student data.";
+                                }
+                            } else {
+                               $conn->rollback();
+                            }
+                            $contactQuery  =  "INSERT INTO `user_contact`( `user_id`, `phone_number`, `email`) VALUES (?,?,?)";
+                            $stmt1 = $conn->prepare($contactQuery);
+                            $stmt1->bind_param("sss", $user_id, $phoneNumber, $email);
+                            $stmt1->execute();
+                            $stmt1->close();
+            
+                          
+                        }
+                    }
                 }
-                else{
-                    $sql = "INSERT INTO `stuff`( `email`,  `user_id`) VALUES (?,?)";
-                    $stm = $conn->prepare($sql);
-                    $stm->bind_param('ss',$email,$user_id);
-                    $stmt->execute();
-                }
-   
             
+                // Commit the transaction if all queries were successful
+                $conn->commit();
+            } catch (\Throwable $th) {
+                // Rollback the transaction on any exception
+                $conn->rollback();
+                throw $th;
             }
-                        $conn->commit();
-
-            } 
-           }   //code...
-                } catch (\Throwable $th) {
-                    $conn->rollback();
-                 throw $th;
-                } 
-                
+            
         
         }
-        header("Location:../html/table.php?role=$role");
+      // header("Location:../html/table.php?role=$role");
     } else {
         echo "Error uploading file.";
     }

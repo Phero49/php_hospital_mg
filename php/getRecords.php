@@ -3,7 +3,9 @@
 include("../db/dbConn.php");
 
 // Your SQL query
-$sql = "SELECT COUNT(record_id) as count, MONTH(date) as month FROM records WHERE 1";
+$sql = "SELECT COUNT(record_id) as count, MONTH(date) as month
+FROM records
+GROUP BY MONTH(date);";
 
 // Execute the query
 $result = $conn->query($sql);
