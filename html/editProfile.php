@@ -76,7 +76,7 @@ if (!isset($_GET['uid'])) {
       <div id="content">
         <?php
         $uid = $_GET['uid'];
-      
+
 
         $sql = "SELECT
         `first_name`,
@@ -87,7 +87,7 @@ if (!isset($_GET['uid'])) {
         s.reg_number,
         uc.phone_number,
         uc.email,
-        s.graduation_year,
+        s.enrollment_year,
         s.faculty
     FROM
         users
@@ -106,6 +106,8 @@ if (!isset($_GET['uid'])) {
 
 
           ?>
+
+
           <div class="container-fluid">
             <h3 class="text-dark mb-4">Edit Profile</h3>
             <div class="row mb-3">
@@ -182,57 +184,60 @@ if (!isset($_GET['uid'])) {
 
                           <div class="row">
                             <div>
-                              <input type="text" name="avatar" value="<?php echo $row['avatar']?>" id="avatarFiled" style="display: none;" />
+                              <input type="text" name="avatar" id="avatarFiled" style="display: none;" />
 
                             </div>
                             <div class="col">
                               <div class="mb-3">
-                                <label class="form-label" for="username"><strong>Student ID</strong><br /></label
-                                ><input
-                                  class="form-control" value=" <?php echo $row['reg_number']?>" type="text" id="studentID" placeholder="BscICT/00/00"
+                                <label class="form-label" for="username"><strong>Student ID</strong><br /></label><input
+                                  class="form-control" readonly type="text" id="studentID" placeholder="BscICT/00/00"
                                   name="studentID" />
                               </div>
+
                               <div class="mb-3">
                                 <label class="form-label" for="username"><strong>Last Name</strong><br /></label>
-                                <input
-                                value="<?php echo $row['last_name']?>"
-                                  class="form-control" type="text" id="lastname" placeholder="" name="lastname" />
+                                <input  class="form-control" type="text"
+                                  id="lastname" placeholder="" name="lastname" />
                               </div>
                               <div class="mb-3">
                                 <label class="form-label" for="username"><strong>Email
                                     Address&nbsp;</strong><br /></label><input class="form-control" type="email"
-                                  id="useremail" value="<?php echo $row['email']?>" placeholder="user@mail.com" name="useremail" />
+                                  id="useremail"  placeholder="user@mail.com"
+                                  name="useremail" />
                               </div>
 
                               <div class="mb-3">
                                 <label class="form-label" for="username"><strong>Date of
                                     Birth&nbsp;</strong><br /></label><input class="form-control" type="date"
-                                  id="dateofbirth" value="<?php echo $row['dob']?>" placeholder="DD/MM/YYYY" name="dateofbirth" />
+                                  id="dateofbirth" placeholder="DD/MM/YYYY"
+                                  name="dateofbirth" />
                               </div>
                             </div>
                             <div class="col">
                               <div class="mb-3">
                                 <label class="form-label" for="email"><strong>First&nbsp;
                                     Name&nbsp;</strong><br /></label><input class="form-control" type="text"
-                                  id="firstname" placeholder="" value=" <?php echo $row['first_name']?>" name="firstname" />
+                                  id="firstname" placeholder="" 
+                                  name="firstname" />
                               </div>
                               <div class="mb-3">
                                 <label class="form-label" for="email"><strong>Phone
                                     Number&nbsp;</strong><br /></label><input class="form-control" type="tel"
-                                  id="phonenumber" <?php echo $row['phone_number']?> placeholder="+265 000-00-000" name="phonenumber" maxlength="10" />
+                                  id="phonenumber"  placeholder="+265 000-00-000"
+                                  name="phonenumber" maxlength="10" />
                               </div>
                               <div class="mb-3">
                                 <label class="form-label" for="email"><strong>Enrollment Year</strong><br /></label><input
-                                  class="form-control" id="enrollmentyear" value="<?php echo $row['graduation_year']?>" placeholder="YYYY" name="enrollmentyear"
-                                  type="date" maxlength="4" min="2014" />
+                                  class="form-control" id="enrollmentyear" 
+                                  placeholder="YYYY" name="enrollmentyear" type="date" maxlength="4" min="2014" />
                               </div>
                               <div class="mb-3">
                                 <label class="form-label" for="email"><strong>Faculty&nbsp;</strong><br /></label><select
-                                  class="form-select"  id="faculty" name="faculty" >
+                                  class="form-select" id="faculty" name="faculty">
                                   <optgroup label="Select Faculty ">
 
-                                    <option value="BBA" selected="<?php echo $row['faculty']?>"><?php echo $row['faculty']?></option>
-                                    <option value="BBA" >BBA</option>
+                                
+                                    <option value="BBA">BBA</option>
                                     <option value="ICT">ICT</option>
                                     <option value="Nursing">Nursing</option>
                                   </optgroup>
@@ -240,13 +245,13 @@ if (!isset($_GET['uid'])) {
                               </div>
                               <input value="<?php echo $uid ?> " name="id" style="display:none;">
                               <div class="mb-3">
-                                <label class="form-label" for="email"><strong>Gender&nbsp;</strong><br /></label><select
-                                  name="gender" class="form-select" id="faculty" aria-readonly>
+                                <label class="form-label" for="email"><strong>Gender&nbsp;</strong><br /></label>
+                                
+                                <select
+                                  name="gender" class="form-select"  id="gender">
                                   <optgroup label="Select Gender ">
-                                    <option value="Male" selected="Male">
-                                      Male
-                                    </option>
-                                    
+                                 
+
                                     <option value="Male" selected="Male">
                                       Male
                                     </option>
@@ -264,7 +269,69 @@ if (!isset($_GET['uid'])) {
                               Save&nbsp;
                             </button>
                           </div>
+
+                          <script>
+
+                            const user_data = <?php echo json_encode($row) ?>;
+                            const inputs = document.querySelectorAll('input,select')
+                            inputs.forEach((el) => {
+                              const id = el.id;
+                              console.log(id)
+                              switch (id) {
+                                case 'avatarFiled':
+                                  el.value = user_data['avatar'];
+                                  break;
+
+                                case 'studentID':
+                                  el.value =  user_data['reg_number'];
+                                  break;
+                                  
+                                  case 'lastname':
+                                  el.value =  user_data['last_name'];
+                                  break;
+                                  
+                                  case 'useremail':
+                                  el.value =  user_data['email'];
+                                  break; 
+                                  
+                                  case 'dateofbirth':
+                                  el.value =  user_data['dob'];
+                                  break;
+    
+                                  case 'firstname':
+                                  el.value =  user_data['first_name'];
+                                  break;
+    
+                                  case 'phonenumber':
+                                  el.value =  user_data['phone_number'];
+                                  break;
+                                  
+                                  case 'enrollmentyear':
+                                  el.value =  user_data['enrollment_year'];
+                                  break; 
+                                  
+                                  case 'gender':
+                                  el.selected =  user_data['gender'];
+                                  break; 
+                                  
+                                  case 'faculty':
+                                   
+                                  el.selected =  user_data['faculty'];
+                                  break;
+
+                                // Add additional cases as needed for other IDs
+
+                                default:
+                                  // Default case if the ID doesn't match any specified cases
+                                  break;
+                              }
+                            })
+
+                          </script>
+
                         <?php } else {
+
+
         } ?>
                       </form>
                     </div>
