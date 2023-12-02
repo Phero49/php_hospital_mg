@@ -118,9 +118,7 @@ if (!isset($_SESSION['user_id'])) {
                                 echo "<div><strong>Registration Number:</strong></div><div>{$row['reg_number']}</div>";
                                 echo "</div>";
 
-                                echo "<div class='d-flex justify-content-between mb-2'>";
-                                echo "<div><strong>Graduation Year:</strong></div><div>{$row['graduation_year']}</div>";
-                                echo "</div>";
+
                                 echo "<div class='d-flex justify-content-between mb-2'>";
                                 echo "<div><strong>Enrollment Year:</strong></div><div>{$row['enrollment_year']}</div>";
                                 echo "</div>";

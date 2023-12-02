@@ -32,8 +32,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // Display the associative array
         for ($i = 0; $i < count($assocData); $i++) {
             $row = $assocData[$i];
-        
-            try {
+        if(count($row) > 0){
+              try {
                 // Start a transaction
                 $conn->begin_transaction();
             
@@ -104,6 +104,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $conn->rollback();
                 throw $th;
             }
+        }
+          
             
         
         }
