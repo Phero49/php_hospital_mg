@@ -175,6 +175,9 @@ if (!isset($_SESSION['user_id'])) {
                         add new users
                       </button>
                     </div>
+                    <div>
+                   
+                    </div>
          
                   </div>
 
@@ -190,15 +193,14 @@ if (!isset($_SESSION['user_id'])) {
     <li><a class="dropdown-item" href="./table.php?role=receptionist">receptionist</a></li>
   </ul>
 </div>
-
-
-                  </div><div>
+                  </div>
+                  <div>
                     
-                        <a  class="btn btn-primary"
-                        role="button"
-                        style="background: #af7505" href="./archievedusers.php">archived users</a>
-                    
-                    </div>
+                    <a  class="btn btn-primary"
+                    role="button"
+                    style="background: #af7505" href="./archievedusers.php">archived users</a>
+                
+                </div>
                 </div>
               </div>
             </nav>
@@ -270,7 +272,7 @@ $role = $_GET['role'];
                 <?php
                     include('../db/dbConn.php');
                     
-                    $sql = "SELECT `user_id`, `avatar`, `role`, `first_name`, `last_name`, `gender` FROM `users` WHERE role = '$role' AND archived = 0 ";
+                    $sql = "SELECT `user_id`, `avatar`, `role`, `first_name`, `last_name`, `gender` FROM `users` WHERE role = '$role' AND archived = 1 ";
                      if(isset($_GET['search']) ){
                       $s = $_GET['search'];
                       $splitString =  explode(' ',$s);
@@ -302,7 +304,7 @@ echo 'wrong';
                         <th>Role</th>
                         <th>Gender</th>
                         <th >ACTION</th>
-                        <th >ACTION</th>
+                     
                       </tr>
                     </thead>
                     <tbody>
@@ -324,16 +326,7 @@ echo 'wrong';
                         <td><?php echo $row['last_name']   ?></td>
                         <td><?php echo $row['role']   ?></td>
                         <td><?php echo $row['gender']   ?></td>
-                        <td>
-                          <a
-                            class="btn btn-primary"
-                            role="button"
-                            
-                            style="background: #af7505; display: <?php echo $role == 'student' ? 'block' : 'none'; ?>;"
-                            href="editProfile.php?uid=<?php echo $row['user_id'] ?>"
-                            >EDIT</a
-                          >
-                        </td>
+                      
                         <td>
                           <button
                             id="<?php echo $row['user_id']  ?>"
@@ -344,7 +337,7 @@ echo 'wrong';
                             class="btn btn-primary text-uppercase delete"
                             style="background: #af7505;"
                           >
-                            Archive
+                            restore
                           </button>
                         </td>
                       </tr>
@@ -378,7 +371,7 @@ echo 'wrong';
             <div class="modal-content">
               <div class="modal-header">
                 <h1 class="modal-title fs-5" id="exampleModalLabel">
-                  Delete user 
+                  Restore user
                 </h1>
                 <button
                   type="button"
@@ -387,8 +380,9 @@ echo 'wrong';
                   aria-label="Close"
                 ></button>
               </div>
-              <div class="modal-body" id="modelBody1">kkk</div>
+              <div class="modal-body" id="modelBody1">
 
+              </div>
               <div class="modal-footer">
                 <button
                   type="button"
@@ -403,7 +397,7 @@ echo 'wrong';
                   data-bs-dismiss="modal"
                   id="confirm-delete"
                 >
-                  delete
+                  restore
                 </button>
               </div>
             </div>
@@ -422,7 +416,7 @@ echo 'wrong';
         ><i class="fas fa-angle-up"></i
       ></a>
     </div>
-    <script src="../deleteuser.js"></script>
+    <script src="../restore.js"></script>
 
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
     <script src="assets/js/theme.js"></script>

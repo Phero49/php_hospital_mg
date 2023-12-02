@@ -2,7 +2,7 @@
 include("../db/dbConn.php");
 if($_SERVER["REQUEST_METHOD"] == "GET"){
     $user_id = $_GET['user_id'];
-    $sql = "UPDATE `users` SET `archived`= 1 WHERE user_id = ?";
+    $sql = "UPDATE `users` SET `archived`= 0 WHERE user_id = ?";
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("s", $user_id);
     $stmt->execute();

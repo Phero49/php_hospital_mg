@@ -61,7 +61,7 @@ if (!isset($_SESSION['user_id'])) {
                     </div>
                     <div class="row">
                         <?php
-                        $sql = "SELECT COUNT(stuff.stuff_id) as stuff_count , COUNT(Students.student_id) as  student_count FROM users LEFT JOIN Students ON Students.user_id = users.user_id LEFT JOIN stuff ON stuff.user_id = users.user_id;";
+                        $sql = "SELECT COUNT(stuff.stuff_id) as stuff_count , COUNT(Students.student_id) as  student_count FROM users LEFT JOIN Students ON Students.user_id = users.user_id LEFT JOIN stuff ON stuff.user_id = users.user_id WHERE users.archived = 0";
                         $result = $conn->query($sql);
                         $res = $result->fetch_assoc();
                         ?>
