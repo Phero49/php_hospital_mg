@@ -151,6 +151,12 @@ console.log(ChartData[month])
 				// forces step size to be 50 units
 				stepSize: 1
 			  }
+			},x: {
+				title: {
+					display: true,
+					text: 'Months'
+				  },
+			 
 			},
 			
 	
