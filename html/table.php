@@ -226,16 +226,7 @@ $role = $_GET['role'];
                       class="dataTables_length"
                       aria-controls="dataTable"
                     >
-                      <label class="form-label"
-                        >Show&nbsp;<select
-                          class="d-inline-block form-select form-select-sm"
-                        >
-                          <option value="10" selected="">10</option>
-                          <option value="25">25</option>
-                          <option value="50">50</option>
-                          <option value="100">100</option></select
-                        >&nbsp;</label
-                      >
+                      
                     </div>
                   </div>
                   <div class="col-md-6">
@@ -378,7 +369,7 @@ echo 'wrong';
             <div class="modal-content">
               <div class="modal-header">
                 <h1 class="modal-title fs-5" id="exampleModalLabel">
-                  Delete user 
+                  Archive user 
                 </h1>
                 <button
                   type="button"
@@ -403,7 +394,7 @@ echo 'wrong';
                   data-bs-dismiss="modal"
                   id="confirm-delete"
                 >
-                  delete
+                  Archive
                 </button>
               </div>
             </div>
